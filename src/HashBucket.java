@@ -23,7 +23,7 @@ public class HashBucket {
             throw new IllegalStateException("Hashbucket is full");
         }
         int hash = key.hashCode();
-        int index = hash%table.length;
+        int index = Math.abs(hash%table.length);
         LinkedList prev = table[index];
         if(prev == null){
             table[index] = new LinkedList();
