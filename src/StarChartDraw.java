@@ -1,6 +1,8 @@
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.List;
 
 public class StarChartDraw {
 
@@ -61,10 +63,19 @@ public class StarChartDraw {
 
         //Drawing Constellations
         StdDraw.setPenColor(StdDraw.YELLOW);
-        Scanner constReader = new Scanner(new File("Constellations.txt"));
-        while (constReader.hasNext()){
-            String[] stars = constReader.nextLine().split(",");
-            StdDraw.line(coordToPixel(((Star) data.get(stars[0])).x),coordToPixel(((Star) data.get(stars[0])).y) ,coordToPixel(((Star) data.get(stars[1])).x) ,coordToPixel(((Star) data.get(stars[1])).y));
+        Scanner constReader/* = new Scanner(new File("Constellations.txt"))*/;
+//        while (constReader.hasNext()){
+//            String[] stars = constReader.nextLine().split(",");
+//            StdDraw.line(coordToPixel(((Star) data.get(stars[0])).x),coordToPixel(((Star) data.get(stars[0])).y) ,coordToPixel(((Star) data.get(stars[1])).x) ,coordToPixel(((Star) data.get(stars[1])).y));
+//        }
+        Random r = new Random();
+        while(true){
+            constReader = new Scanner(new File("Constellations.txt"));
+            while (constReader.hasNext()){
+                String[] stars = constReader.nextLine().split(",");
+                StdDraw.line(coordToPixel(((Star) data.get(stars[0])).x),coordToPixel(((Star) data.get(stars[0])).y) ,coordToPixel(((Star) data.get(stars[1])).x) ,coordToPixel(((Star) data.get(stars[1])).y));
+            }
+            StdDraw.setPenColor(new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
         }
     }
 }
